@@ -1,0 +1,121 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../cart-behavior/cart-behavior.html" />
+<link rel="stylesheet" href="./cart-page.css" />
+
+<dom-module id="cart-page">
+  <template>
+    <div id="pageCart">
+      <div id="cartList">Cart</div>
+      <div id="pageCart-list">
+        <template is="dom-if" if="{{!cartValue}}">
+          <img id="no-cart" src="../../assets/nocart.png" />
+        </template>
+        <template
+          id="cartProduct"
+          is="dom-repeat"
+          items="{{cartProducts}}"
+          as="cart"
+        >
+          <div id="pageCart-movieDvd">
+            <img
+              id="pageCart-moviePoster"
+              src="../../assets/movie/{{movieImage(cart.movieName.value)}}.jpg"
+            />
+            <div id="pageCart-movie-name">{{cart.movieName.value}}</div>
+            <div id="pageCart-movie-rating">
+              {{cart.movieRating.value}}/10
+              <img id="pageDvd-star" src="../../assets/star.png" />
+            </div>
+            <div id="pageCart-movie-release">{{cart.movieRelease.value}}</div>
+            <div id="pageCart-movie-category">{{cart.movieCategory.value}}</div>
+            <div id="pageCart-movie-language">{{cart.movieLanguage.value}}</div>
+            <template is="dom-if" if="{{cart.cartQuantity}}"
+              ><div id="pageCart-cartQuantity">
+                {{cart.cartQuantity}}
+              </div></template
+            >
+            <div id="pageCart-movie-format">{{cart.movieFormat.value}}</div>
+          </div>
+        </template>
+        <div id="buttonPurchase">
+          <button class$="[[_isNeeded(cartValue)]]" on-click="purchaseall">
+            Purchase All
+          </button>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: "cart-page",
+      behaviors: [cartBehavior],
+      attached: function () {
+        var movieButton = document.querySelector("dvd-page");
+        movieButton.addEventListener("addCartDvd", () => {
+          var countMovies = {};
+          this.cartList.forEach(function (x) {
+            countMovies[x.movieName.value] =
+              (countMovies[x.movieName.value] || 0) + 1;
+          });
+          this.set("cartProducts", this.cartList);
+          for (let i = 0; i < this.cartProducts.length; i++) {
+            for (let j = 0; j < Object.keys(countMovies).length; j++) {
+              if (
+                Object.keys(countMovies)[j] ==
+                this.cartProducts[i].movieName.value
+              ) {
+                this.set(
+                  ["cartProducts", i, "cartQuantity"],
+                  Object.values(countMovies)[j]
+                );
+              }
+            }
+          }
+          var newArray = [...new Set(this.cartProducts)];
+          this.set("cartProducts", newArray);
+          this.$.cartProduct.render();
+          if (!this.cartProducts) {
+            this.set("cartValue", false);
+          } else {
+            this.set("cartValue", true);
+          }
+        });
+        var downloadButton = document.querySelector("download-page");
+        downloadButton.addEventListener("addCartDownload", () => {
+          var newArray = [...new Set(this.cartList)];
+          this.set("cartProducts", newArray);
+          this.$.cartProduct.render();
+          if (!this.cartProducts) {
+            this.set("cartValue", false);
+          } else {
+            this.set("cartValue", true);
+          }
+        });
+      },
+      properties: {
+        cartProducts: {
+          type: Array,
+          value: [],
+        },
+        originalData: {
+          type: Array,
+          value: [],
+        },
+        cartValue: {
+          type: Boolean,
+          value: false,
+        },
+      },
+      movieImage: function (name) {
+        return name.replaceAll(" ", "");
+      },
+      purchaseall: function () {
+        this.set("cartProducts", []);
+        this.set("cartValue", false);
+      },
+      _isNeeded: function (cartValue) {
+        return cartValue ? "yesButton" : "noButton";
+      },
+    });
+  </script>
+</dom-module>

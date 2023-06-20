@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Monofett&display=swap");
+
+#pageHeader {
+  margin: 1vw;
+  background-color: skyblue;
+  padding: 1vw;
+  height: 8h;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 3vw;
+}
+
+#pageLogoName {
+  display: flex;
+  align-items: center;
+}
+
+#pageName {
+  font-size: 4vw;
+  padding-left: 1vw;
+  font-family: Monofett;
+  font-weight: 600;
+  position: relative;
+  top: -0.5vw;
+}
+
+#pageLogo-image {
+  height: 6vw;
+  width: 6vw;
+}
+
+#pageNavigation {
+  display: flex;
+  align-items: center;
+}
+
+#homePage,
+#dvdPage,
+#downloadPage,
+#cartPage {
+  display: flex;
+  align-items: center;
+  padding-right: 2vw;
+  font-size: 1.6vw;
+}
+
+#homePage-image,
+#dvdPage-image,
+#downloadPage-image,
+#cartPage-image {
+  height: 2vw;
+  width: 2vw;
+  padding-right: 0.3vw;
+}
+
+#homePage-link,
+#dvdPage-link,
+#downloadPage-link,
+#cartPage-link {
+  color: black;
+  text-decoration: none;
+}
+
+#homePage:hover,
+#dvdPage:hover,
+#downloadPage:hover,
+#cartPage:hover {
+  color: black;
+  text-decoration: overline;
+}

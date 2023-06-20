@@ -1,0 +1,228 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../cart-behavior/cart-behavior.html" />
+<link rel="stylesheet" href="./dvd-page.css" />
+
+<dom-module id="dvd-page">
+  <style></style>
+  <template>
+    <div id="pageDvd">
+      <div id="pageDvdHeader">
+        <div id="dvdList">DVD List</div>
+        <div id="pageDvd-filter">
+          <label id="filterTitle">Filter by</label>
+          <div id="pageDvd-filterOption">
+            <div id="pageDvd-filterCategory">
+              <label>Category: </label>
+              <select id="pageDvd_categoryValue">
+                <option value="All">All</option>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Romantic">Romantic</option>
+              </select>
+            </div>
+            <div id="pageDvd-filterLanguage">
+              <label>Language: </label>
+              <select id="pageDvd_languageValue">
+                <option value="All">All</option>
+                <option value="Tamil">Tamil</option>
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Malayalam">Malayalam</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pageDvd-list">
+        <div id="pageDvd-movieList">
+          <template id="newItem" is="dom-repeat" items="{{dvdList}}" as="dvd">
+            <template is="dom-if" if="[[_isTrue(dvd.movieQuantity.value)]]">
+              <div id="pageDvd-movieDvd">
+                <img
+                  id="pageDvd-moviePoster"
+                  src="../../assets/movie/{{movieImage(dvd.movieName.value)}}.jpg"
+                />
+                <div id="pageDvd-movie-name">{{dvd.movieName.value}}</div>
+                <div id="pageDvd-movie-rating">
+                  {{dvd.movieRating.value}}/10
+                  <img id="pageDvd-star" src="../../assets/star.png" />
+                </div>
+                <div id="pageDvd-movie-release">{{dvd.movieRelease.value}}</div>
+                <div id="pageDvd-movie-category">
+                  {{dvd.movieCategory.value}}
+                </div>
+                <div id="pageDvd-movie-language">
+                  {{dvd.movieLanguage.value}}
+                </div>
+                <div id="pageDvd-movie-quantity">
+                  Quantity: {{dvd.movieQuantity.value}}
+                </div>
+                <div id="pageDvd-buttonAddToCart">
+                  <button id="pageDvd-addToCart" on-click="addCartFunction">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </template>
+            <template is="dom-if" if="[[!_isTrue(dvd.movieQuantity.value)]]">
+              <div id="pageDvd-movieDvd" class="pageDvd-outOfStock">
+                <img
+                  id="pageDvd-moviePoster-outofStock"
+                  src="../../assets/movie/{{movieImage(dvd.movieName.value)}}.jpg"
+                />
+                <div id="pageDvd-movie-name">{{dvd.movieName.value}}</div>
+                <div id="pageDvd-movie-rating">
+                  {{dvd.movieRating.value}}/10
+                  <img id="pageDvd-star" src="../../assets/star.png" />
+                </div>
+                <div id="pageDvd-movie-release">{{dvd.movieRelease.value}}</div>
+                <div id="pageDvd-movie-category">
+                  {{dvd.movieCategory.value}}
+                </div>
+                <div id="pageDvd-movie-language">
+                  {{dvd.movieLanguage.value}}
+                </div>
+                <div id="pageDvd-movie-quantity">
+                  Quantity: {{dvd.movieQuantity.value}}
+                </div>
+                <div id="pageDvd-buttonAddToCart">
+                  <button
+                    id="pageDvd-outOfStock"
+                    on-click="addCartFunction"
+                    disabled
+                  >
+                    Out Of Stock
+                  </button>
+                </div>
+              </div>
+            </template>
+          </template>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: "dvd-page",
+      behaviors: [cartBehavior],
+      ready: function () {
+        fetch("../../assets/Json/dvd.json")
+          .then((response) => response.json())
+          .then((data) => {
+            var tempData = JSON.stringify(data);
+            var movieDetail = JSON.parse(tempData);
+            this.set("dvdList", movieDetail);
+            this.set("defaultList", movieDetail);
+          })
+          .catch((error) => {
+            console.error("Error fetching JSON data:", error);
+          });
+      },
+      attached: function (e) {
+        this.$.pageDvd_categoryValue.addEventListener("change", (e) => {
+          var newDetail = [...this.defaultList];
+          if (e.target.value !== "All") {
+            this.set("categorySelect", true);
+            newDetail = newDetail.filter((movie) => {
+              return movie.movieCategory.value == e.target.value;
+            });
+            this.set("categoryFilter", newDetail);
+          } else {
+            this.set("categorySelect", false);
+            this.set("categoryFilter", this.defaultList);
+          }
+          this.movieFilter();
+        });
+
+        this.$.pageDvd_languageValue.addEventListener("change", (e) => {
+          var newDetail = [...this.defaultList];
+          if (e.target.value !== "All") {
+            this.set("languageSelect", true);
+            newDetail = newDetail.filter((filterMovie) => {
+              return filterMovie.movieLanguage.value == e.target.value;
+            });
+            this.set("languageFilter", newDetail);
+          } else {
+            this.set("languageSelect", false);
+            this.set("languageFilter", this.defaultList);
+          }
+          this.movieFilter();
+        });
+      },
+      properties: {
+        dvdList: {
+          type: Array,
+          value: [],
+        },
+        defaultList: {
+          type: Array,
+          value: [],
+        },
+        categoryFilter: {
+          type: Array,
+          value: [],
+        },
+        languageFilter: {
+          type: Array,
+          value: [],
+        },
+        categorySelect: {
+          type: Boolean,
+          value: false,
+        },
+        languageSelect: {
+          type: Boolean,
+          value: false,
+        },
+      },
+      movieImage: function (name) {
+        return name.replaceAll(" ", "");
+      },
+      CommonItemsArray: function (array_1, array_2) {
+        var commonArray = [];
+        for (var i = 0; i < array_1.length; i++) {
+          for (var j = 0; j < array_2.length; j++) {
+            if (array_1[i].movieName == array_2[j].movieName) {
+              commonArray.push(array_1[i]);
+            }
+          }
+        }
+        return commonArray;
+      },
+      movieFilter: function () {
+        if (!this.categorySelect && !this.languageSelect) {
+          this.set("dvdList", this.defaultList);
+        }
+        if (this.categorySelect && this.languageSelect) {
+          var filterCategory = [...this.categoryFilter];
+          var languageCategory = [...this.languageFilter];
+          var array = this.CommonItemsArray(filterCategory, languageCategory);
+          this.set("dvdList", array);
+        }
+        if (!this.categorySelect && this.languageSelect) {
+          this.set("dvdList", this.languageFilter);
+        }
+        if (this.categorySelect && !this.languageSelect) {
+          this.set("dvdList", this.categoryFilter);
+        }
+      },
+      addCartFunction: function (detail) {
+        var cartMovie = detail.model.__data__.dvd;
+        this.push("cartList", cartMovie);
+        this.fire("addCartDvd");
+        for (let i = 0; i < this.dvdList.length; i++) {
+          if (cartMovie.movieName.value == this.dvdList[i].movieName.value) {
+            this.set(
+              ["dvdList", i, "movieQuantity.value"],
+              this.dvdList[i].movieQuantity.value - 1
+            );
+          }
+        }
+      },
+      _isTrue: function (value) {
+        return value === 0 ? false : true;
+      },
+    });
+  </script>
+</dom-module>

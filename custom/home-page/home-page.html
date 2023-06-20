@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="stylesheet" href="./home-page.css" />
+
+<dom-module id="home-page">
+  <template>
+    <div id="pageHome">
+      <img id="gif" src="../../assets/movie.gif" />
+      <div id="content">
+        <img class="gif" src="../../assets/roll.gif" />
+        <div id="tagLine">Welcome to the world of movies!!!</div>
+        <img class="gif" src="../../assets/roll.gif" />
+      </div>
+    </div>
+    <div id="trending">
+      <div id="title">Trending Movies</div>
+      <div id="poster">
+        <img class="poster-image" src="../../assets/trending/Fastx.jpg" />
+        <img class="poster-image" src="../../assets/trending/Kapella.jpg" />
+        <img
+          class="poster-image"
+          src="../../assets/trending/NerkondaParvai.jpg"
+        />
+        <img class="poster-image" src="../../assets/trending/Pathu Thala.jpg" />
+        <img class="poster-image" src="../../assets/trending/Teddy.jpg" />
+        <img
+          class="poster-image"
+          src="../../assets/trending/Transformers.jpg"
+        />
+        <img class="poster-image" src="../../assets/trending/VikramVedha.jpg" />
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: "home-page",
+    });
+  </script>
+</dom-module>

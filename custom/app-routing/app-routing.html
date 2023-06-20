@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../../bower_components/app-route/app-route.html" />
+<link rel="import" href="../../bower_components/app-route/app-location.html" />
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html" />
+<link rel="import" href="../home-page/home-page.html" />
+<link rel="import" href="../dvd-page/dvd-page.html" />
+<link rel="import" href="../download-page/download-page.html" />
+<link rel="import" href="../cart-page/cart-page.html" />
+
+<dom-module id="app-routing">
+  <template>
+    <app-location route="{{route}}"></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="/:view"
+      data="{{routeData}}"
+      tail="{{subroute}}"
+    ></app-route>
+    <iron-pages selected="[[routeData.view]]" attr-for-selected="route-val">
+      <home-page route-val="home" route="{{subroute}}"></home-page>
+      <dvd-page route-val="dvd" route="{{subroute}}"></dvd-page>
+      <download-page route-val="download" route="{{subroute}}"></download-page>
+      <cart-page route-val="cart" route="{{subroute}}"></cart-page>
+    </iron-pages>
+  </template>
+  <script>
+    Polymer({
+      is: "app-routing",
+    });
+  </script>
+</dom-module>

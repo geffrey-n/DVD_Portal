@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="stylesheet" href="./header.css" />
+
+<dom-module id="header-section">
+  <template>
+    <div id="pageHeader">
+      <div id="pageLogoName">
+      <span id="pageLogo">
+        <img id="pageLogo-image" src="../../assets/logo.png" />
+      </span>
+      <span id="pageName"><span>Jaz Views</span>
+      </div>
+      <div id="pageNavigation">
+      <span id="homePage">
+        <img id="homePage-image" src="../../assets/home.png" />
+        <a id="homePage-link" href="/home">Home</a>
+      </span>
+      <span id="dvdPage">
+        <img id="dvdPage-image" src="../../assets/dvd.png" />
+        <a id="dvdPage-link" href="/dvd">DVD</a>
+      </span>
+      <span id="downloadPage">
+        <img id="downloadPage-image" src="../../assets/download.png" />
+        <a id="downloadPage-link" href="/download">Movie Downloads</a>
+      </span>
+       <span id="cartPage">
+        <img id="cartPage-image" src="../../assets/cart.png" />
+        <a id="cartPage-link" href="/cart">Cart</a>
+      </span>
+    </div>
+     
+  </template>
+  <script>
+    Polymer({
+      is: "header-section",
+    });
+  </script>
+</dom-module>

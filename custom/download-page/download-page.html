@@ -1,0 +1,187 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../cart-behavior/cart-behavior.html" />
+<link rel="stylesheet" href="./download-page.css" />
+
+<dom-module id="download-page">
+  <template>
+    <div id="pageDownload">
+      <div id="pageDownloadHeader">
+        <div id="downloadList">Movie Download</div>
+        <div id="pageDownload-filter">
+          <label id="filterTitle">Filter by</label>
+          <div id="pageDownload-filterOption">
+            <div id="pageDownload-filterCategory">
+              <label>Category: </label>
+              <select id="pageDownload_categoryValue">
+                <option value="All">All</option>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Romantic">Romantic</option>
+                <option value="Horror">Horror</option>
+              </select>
+            </div>
+            <div id="pageDownload-filterLanguage">
+              <label>Language: </label>
+              <select id="pageDownload_languageValue">
+                <option value="All">All</option>
+                <option value="Tamil">Tamil</option>
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Malayalam">Malayalam</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pageDownload-list">
+        <div id="pageDownload-movieList">
+          <template is="dom-repeat" items="{{downloadList}}" as="download">
+            <div id="pageDownload-movieDvd">
+              <img
+                id="pageDownload-moviePoster"
+                src="../../assets/movie/{{movieImage(download.movieName.value)}}.jpg"
+              />
+              <div id="pageDownload-movie-name">
+                {{download.movieName.value}}
+              </div>
+              <div id="pageDownload-movie-rating">
+                {{download.movieRating.value}}/10
+                <img id="pageDownload-star" src="../../assets/star.png" />
+              </div>
+              <div id="pageDownload-movie-release">
+                {{download.movieRelease.value}}
+              </div>
+              <div id="pageDownload-movie-format">
+                {{download.movieFormat.value}}
+              </div>
+              <div id="pageDownload-movie-category">
+                {{download.movieCategory.value}}
+              </div>
+              <div id="pageDownload-movie-language">
+                {{download.movieLanguage.value}}
+              </div>
+              <div id="pageDownload-buttonDownload">
+                <button id="pageDownload-download" on-click="addCartFunction">
+                  Download
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: "download-page",
+      behaviors: [cartBehavior],
+      ready: function () {
+        fetch("../../assets/Json/download.json")
+          .then((response) => response.json())
+          .then((data) => {
+            var tempData = JSON.stringify(data);
+            var movieDetail = JSON.parse(tempData);
+            this.set("downloadList", movieDetail);
+            this.set("defaultList", movieDetail);
+          })
+          .catch((error) => {
+            console.error("Error fetching JSON data:", error);
+          });
+      },
+      attached: function (e) {
+        this.$.pageDownload_categoryValue.addEventListener("change", (e) => {
+          var newDetail = [...this.defaultList];
+          if (e.target.value !== "All") {
+            this.set("categorySelect", true);
+            newDetail = newDetail.filter((movie) => {
+              return movie.movieCategory.value == e.target.value;
+            });
+            this.set("categoryFilter", newDetail);
+          } else {
+            this.set("categorySelect", false);
+            this.set("categoryFilter", this.defaultList);
+          }
+          this.movieFilter();
+        });
+
+        this.$.pageDownload_languageValue.addEventListener("change", (e) => {
+          var newDetail = [...this.defaultList];
+          if (e.target.value !== "All") {
+            this.set("languageSelect", true);
+            newDetail = newDetail.filter((filterMovie) => {
+              return filterMovie.movieLanguage.value == e.target.value;
+            });
+            this.set("languageFilter", newDetail);
+          } else {
+            this.set("languageSelect", false);
+            this.set("languageFilter", this.defaultList);
+          }
+          this.movieFilter();
+        });
+      },
+      properties: {
+        downloadList: {
+          type: Array,
+          value: [],
+        },
+        defaultList: {
+          type: Array,
+          value: [],
+        },
+        categoryFilter: {
+          type: Array,
+          value: [],
+        },
+        languageFilter: {
+          type: Array,
+          value: [],
+        },
+        categorySelect: {
+          type: Boolean,
+          value: false,
+        },
+        languageSelect: {
+          type: Boolean,
+          value: false,
+        },
+      },
+      movieImage: function (name) {
+        return name.replaceAll(" ", "");
+      },
+      CommonItemsArray: function (array_1, array_2) {
+        var commonArray = [];
+        for (var i = 0; i < array_1.length; i++) {
+          for (var j = 0; j < array_2.length; j++) {
+            if (array_1[i].movieName == array_2[j].movieName) {
+              commonArray.push(array_1[i]);
+            }
+          }
+        }
+        return commonArray;
+      },
+      movieFilter: function () {
+        if (!this.categorySelect && !this.languageSelect) {
+          this.set("downloadList", this.defaultList);
+        }
+        if (this.categorySelect && this.languageSelect) {
+          var filterCategory = [...this.categoryFilter];
+          var languageCategory = [...this.languageFilter];
+          var array = this.CommonItemsArray(filterCategory, languageCategory);
+          this.set("downloadList", array);
+        }
+        if (!this.categorySelect && this.languageSelect) {
+          this.set("downloadList", this.languageFilter);
+        }
+        if (this.categorySelect && !this.languageSelect) {
+          this.set("downloadList", this.categoryFilter);
+        }
+      },
+      addCartFunction: function (detail) {
+        var cartMovie = detail.model.__data__.download;
+        this.push("cartList", cartMovie);
+        this.fire("addCartDownload");
+      },
+    });
+  </script>
+</dom-module>

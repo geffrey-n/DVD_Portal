@@ -1,0 +1,133 @@
+#pageDownload {
+  margin: 1vw;
+  background-color: #87ceeb;
+  border-radius: 3vw;
+  height: 83vh;
+}
+
+#pageDownloadHeader {
+  display: flex;
+  padding: 1vw;
+  flex-direction: column;
+}
+
+#downloadList {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 3vw;
+  padding-bottom: 2vw;
+}
+
+#pageDownload-filter {
+  display: flex;
+  justify-content: center;
+}
+
+#pageDownload-filterOption {
+  display: flex;
+}
+
+#pageDownload-filterCategory,
+#pageDownload-filterLanguage {
+  padding-right: 2vw;
+}
+
+#pageDownload_categoryValue,
+#pageDownload_languageValue {
+  border: 0vw;
+  padding: 0.3vw;
+  border-radius: 0.4vw;
+  font-size: 1vw;
+}
+
+#pageDownload_categoryValue option,
+#pageDownload_languageValue option {
+  background-color: rgb(135, 206, 235, 0.4);
+}
+
+#pageDownload-list {
+  height: 80%;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+}
+
+#pageDownload-movieList {
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  scroll-behavior: smooth;
+  justify-content: space-evenly;
+}
+
+#pageDownload-movieDvd {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1.5vw;
+  font-weight: 200;
+}
+
+#pageDownload-moviePoster {
+  height: 27vw;
+  width: 18vw;
+  border-radius: 3vw;
+  margin: 1vw;
+}
+
+#pageDownload-moviePoster:hover {
+  border: 0.5vw rgb(21, 142, 195) inset;
+}
+
+#pageDownload-star {
+  height: 1.2vw;
+}
+#pageDownload-movie-name {
+  font-size: 2vw;
+  font-weight: bolder;
+}
+
+#pageDownload-movie-rating,
+#pageDownload-movie-release,
+#pageDownload-movie-category,
+#pageDownload-movie-language,
+#pageDownload-movie-quantity,
+#pageDownload-movie-format {
+  font-size: 1.5vw;
+  font-weight: bolder;
+}
+
+#pageDownload-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+#pageDownload-list::-webkit-scrollbar-track {
+  background: skyblue;
+}
+
+#pageDownload-list::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0, 0.5);
+}
+
+#pageDownload-list::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0, 0.7);
+}
+
+#pageDownload-buttonDownload {
+  padding-top: 0.5vw;
+}
+
+#pageDownload-download {
+  font-size: 1.5vw;
+  width: 13vw;
+  height: 3vw;
+  border-radius: 2vw;
+  border: 0vw;
+  cursor: pointer;
+}
+
+#pageDownload-download:hover {
+  font-size: 1.6vw;
+  font-weight: bold;
+}
