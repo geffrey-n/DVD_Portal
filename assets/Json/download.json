@@ -1,0 +1,237 @@
+[
+  {
+    "movieName": {
+      "type": "String",
+      "value": "96"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 10
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2019
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".avi file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Romantic"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Vinnaithandi Varuvaya"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 10
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2010
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".mp4 file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Romantic"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "O Kadhal kanmani"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 9.5
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2015
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".flv file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Romantic"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Vikram"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 8.7
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2022
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".avi file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Action"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Visuvasam"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 9.7
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2020
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".mp4 file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Drama"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Imaika Nodigal"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 8.9
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2018
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".avi file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Action"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Hero"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 7.9
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2019
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".flv file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Action"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Mersal"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 9.5
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2019
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".avi file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Drama"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "The Nun"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 9.5
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2019
+    },
+    "movieFormat": {
+      "type": "String",
+      "value": ".avi file"
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Horror"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "English"
+    }
+  }
+]

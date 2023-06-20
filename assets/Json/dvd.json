@@ -1,0 +1,210 @@
+[
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Bahubali"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 8
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2016
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Action"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    },
+    "movieQuantity": {
+      "type": " Number",
+      "value": 10
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "RRR"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 10
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2019
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Action"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Tamil"
+    },
+    "movieQuantity": {
+      "type": "Number",
+      "value": 10
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Ponniyan Selvan"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 9.5
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2022
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Action"
+    },
+    "movieLanguage": {
+      "type": " String",
+      "value": "Tamil"
+    },
+    "movieQuantity": {
+      "type": "Number",
+      "value": 10
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Avatar"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 9.9
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2010
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Science Fiction"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "English"
+    },
+    "movieQuantity": {
+      "type": "Number",
+      "value": 10
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Life of Pi"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 8.25
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2011
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Drama"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "English"
+    },
+    "movieQuantity": {
+      "type": "Number",
+      "value": 10
+    }
+  },
+  {
+    "movieName": {
+      "type": "String",
+      "value": "Sita Ramam"
+    },
+    "movieRating": {
+      "type": " Number",
+      "value": 8
+    },
+    "movieRelease": {
+      "type": "Number",
+      "value": 2022
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Romantic"
+    },
+    "movieLanguage": {
+      "type": " String",
+      "value": "Tamil"
+    },
+    "movieQuantity": {
+      "type": "Number",
+      "value": 10
+    }
+  },
+  {
+    "movieName": {
+      "type": " String",
+      "value": "Kumbalangi Nights"
+    },
+    "movieRating": {
+      "type": " Number",
+      "value": 9.25
+    },
+    "movieRelease": {
+      "type": " Number",
+      "value": 2017
+    },
+    "movieCategory": {
+      "type": "String",
+      "value": "Romantic"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Malayalam"
+    },
+    "movieQuantity": {
+      "type": "Number",
+      "value": 10
+    }
+  },
+  {
+    "movieName": {
+      "type": " String",
+      "value": "Taare Zameen Par"
+    },
+    "movieRating": {
+      "type": "Number",
+      "value": 10
+    },
+    "movieRelease": {
+      "type": " Number",
+      "value": 2007
+    },
+    "movieCategory": {
+      "type": " String",
+      "value": "Romantic"
+    },
+    "movieLanguage": {
+      "type": "String",
+      "value": "Hindi"
+    },
+    "movieQuantity": {
+      "type": "Number",
+      "value": 10
+    }
+  }
+]
